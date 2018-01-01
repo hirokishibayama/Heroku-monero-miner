@@ -1,5 +1,7 @@
 # monero-miner
 
+... copy from https://github.com/MoneroMining/monero-miner ...
+
 1) Fork or Clone this Repository
 
 2) Run "npm start"
