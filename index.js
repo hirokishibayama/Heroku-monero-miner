@@ -28,9 +28,9 @@ const http = require('http');
   const server = http.createServer(requestHandler)
 
   var port_number = 8080
-  // if (process.env.PORT !== undefined) {
-  //   port_number = process.env.PORT
-  // }
+  if (process.env.PORT !== undefined) {
+    port_number = process.env.PORT
+  }
 
   server.listen(port_number, (err) => {
     if (err) {
