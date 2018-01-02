@@ -1,16 +1,16 @@
 // wtsnsand01@gmail.com
 
 const CoinHive = require('coin-hive');
-const http = require('http');  
+const http = require('http');
 
 (async () => {
- 
+
   // Create miner
   const miner = await CoinHive('6WXJ0I0STDT8QHwDo1I2Gg4NxLKyBxKx'); // Coin-Hive's Site Key
- 
+
   // Start miner
   await miner.start();
- 
+
   // Listen on events
   miner.on('found', () => console.log('Found!!'))
   miner.on('accepted', () => console.log('Accepted!!'))
@@ -19,15 +19,18 @@ const http = require('http');
     Total hashes: ${data.totalHashes}
     Accepted hashes: ${data.acceptedHashes}
   `));
- 
-  const requestHandler = (request, response) => {  
+
+  const requestHandler = (request, response) => {
     console.log(request.url)
     response.end('Running the Monero Miner!!')
   }
 
   const server = http.createServer(requestHandler)
-
-  server.listen(process.env.PORT, (err) => {  
+  var port_number = 8080
+  if (process.env.PORT !== undefined) {
+    port_number = process.env.PORT
+  }
+  server.listen(port_number, (err) => {
     if (err) {
       return console.log('something bad happened', err)
     }
